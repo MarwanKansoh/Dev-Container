@@ -162,6 +162,9 @@ RUN arch="$(dpkg --print-architecture)" \
 # Linters — Python (Ruff)
 RUN pip3 install --no-cache-dir --break-system-packages ruff==${RUFF_VERSION}
 
+# Newman (Postman CLI)
+RUN npm install -g newman
+
 # Linters — Node.js (ESLint)
 RUN npm install -g eslint@${ESLINT_VERSION}
 

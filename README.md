@@ -33,6 +33,9 @@ A shared development container for engineering teams. This image packages the co
 - pip
 - npm
 
+### API testing
+- Newman (Postman CLI)
+
 ### Shell and build utilities
 - bash
 - curl
