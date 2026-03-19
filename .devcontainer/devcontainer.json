@@ -1,0 +1,21 @@
+{
+  "name": "Engineering Dev Container",
+  "build": {
+    "dockerfile": "../Dockerfile"
+  },
+  "remoteUser": "devuser",
+  "workspaceFolder": "/workspace",
+  "postStartCommand": "verify-tools",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "ms-python.python",
+        "golang.go",
+        "hashicorp.terraform",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "redhat.vscode-yaml"
+      ]
+    }
+  }
+}
