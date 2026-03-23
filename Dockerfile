@@ -15,6 +15,8 @@ ARG YQ_VERSION=v4.44.6
 ARG GOLANGCI_LINT_VERSION=v1.64.5
 ARG ESLINT_VERSION=9.22.0
 ARG RUFF_VERSION=0.11.0
+ARG BLACK_VERSION=25.1.0
+ARG UV_VERSION=0.6.6
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
@@ -48,6 +50,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     xz-utils \
     zip \
     build-essential \
+    openssh-server \
+    postgresql-client \
+    mysql-client \
+    && mkdir -p /var/run/sshd \
     && rm -rf /var/lib/apt/lists/*
 
 # GitHub CLI
@@ -159,8 +165,11 @@ RUN arch="$(dpkg --print-architecture)" \
     && dpkg -i /tmp/session-manager-plugin.deb \
     && rm -f /tmp/session-manager-plugin.deb
 
-# Linters — Python (Ruff)
-RUN pip3 install --no-cache-dir --break-system-packages ruff==${RUFF_VERSION}
+# Linters — Python (Ruff, Black)
+RUN pip3 install --no-cache-dir --break-system-packages ruff==${RUFF_VERSION} black==${BLACK_VERSION}
+
+# uv (Python package manager)
+RUN curl -fsSL https://astral.sh/uv/${UV_VERSION}/install.sh | env UV_INSTALL_DIR=/usr/local/bin sh
 
 # Newman (Postman CLI)
 RUN npm install -g newman

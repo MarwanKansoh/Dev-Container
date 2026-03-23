@@ -16,6 +16,10 @@ A shared development container for engineering teams. This image packages the co
 - kubectl
 - Helm
 
+### SQL clients
+- PostgreSQL client (psql)
+- MySQL client
+
 ### AI-assisted development
 - Claude Code
 
@@ -26,15 +30,20 @@ A shared development container for engineering teams. This image packages the co
 
 ### Linters
 - Ruff (Python)
+- Black (Python)
 - ESLint (Node.js)
 - golangci-lint (Go)
 
 ### Package managers
 - pip
+- uv
 - npm
 
 ### API testing
 - Newman (Postman CLI)
+
+### SSH
+- OpenSSH server
 
 ### Shell and build utilities
 - bash
@@ -148,6 +157,8 @@ ARG YQ_VERSION=v4.44.6
 ARG GOLANGCI_LINT_VERSION=v1.64.5
 ARG ESLINT_VERSION=9.22.0
 ARG RUFF_VERSION=0.11.0
+ARG BLACK_VERSION=25.1.0
+ARG UV_VERSION=0.6.6
 ```
 
 You can override them at build time:
